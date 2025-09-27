@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.FlyoutMenuPage"
+              xmlns:system="clr-namespace:System;assembly=netstandard"
+             Padding="0" BackgroundColor="White"
+             IconImageSource="hamburger.png"
+             Title=" ">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Spacing="10" Margin="10">
+
+        <StackLayout HorizontalOptions="FillAndExpand" Spacing="5" >
+            <!--<Image x:Name="candidateimage" Aspect="AspectFit" 
+               HeightRequest="50" WidthRequest="50"
+               VerticalOptions="Center" HorizontalOptions="Start" />-->
+            <StackLayout  >
+                <Frame CornerRadius="100" 
+                    HeightRequest="180" WidthRequest="100"
+                    HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                    <Image Source="ic_usericon.png"  x:Name="candidateimage" HorizontalOptions="Center" Aspect="Fill" VerticalOptions="Center" />
+                </Frame>
+            </StackLayout>
+
+
+            <Label  FontSize="18" TextColor="Black" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+
+                            <Span Text="{x:Static system:Environment.NewLine}"/>
+                            <Span Text="Welcome " TextColor="#078ff0"/>
+
+                            <Span x:Name="lbl_username" TextColor="#078ff0" />
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Label 
+               FontSize="20"  Text="Registration Details" TextColor="#078ff0"
+               FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="CenterAndExpand">
+            </Label>
+        </StackLayout>
+
+        <BoxView HeightRequest="2" BackgroundColor="#078ff0"/>
+
+        <CollectionView x:Name="collectionViewFlyout" x:FieldModifier="public" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5,10" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        
+                        <Image Source="{Binding MenuIcon}" />
+                        
+                        <Label Grid.Column="1" Margin="20,0" Text="{Binding Title}" FontSize="18" TextColor="{Binding Textcolor}" FontAttributes="Bold" VerticalOptions="Center" />
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup Name="CommonStates">
+                                <VisualState Name="Normal" />
+                                <VisualState Name="Selected">
+                                    <VisualState.Setters>
+                                        <Setter Property="BackgroundColor" Value="#fff" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <BoxView HeightRequest="2" BackgroundColor="#078ff0"/>
+
+        <StackLayout VerticalOptions="EndAndExpand">
+            <Label IsVisible="false" x:Name="lbl_finalsubmit" Text="Final Submit button will be visible, once Personal and Contact details are submitted" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" FontSize="12"/>
+            <Label Text="Last Updated" TextColor="Black" FontAttributes="Bold" HorizontalOptions="Center" />
+            <Label Text="{Binding Source={x:Static system:DateTime.Now}, StringFormat='{0:MMMM dd, yyyy} {0:HH\\:mm}'}"
+               TextColor="Black" HorizontalOptions="Center" />
+        </StackLayout>
+
+    </StackLayout>
+</ContentPage>

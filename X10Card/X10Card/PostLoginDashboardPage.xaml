@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.PostLoginDashboardPage"
+              xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"  >
+    <NavigationPage.TitleView  >
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_logout1.png" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+            <ScrollView VerticalOptions ="FillAndExpand">
+                <StackLayout>
+                    <Frame  CornerRadius="10"  BorderColor="Transparent" HasShadow="True" Padding="10" VerticalOptions="FillAndExpand">
+                        <StackLayout  Orientation="Vertical">
+                            <StackLayout>
+                                <Frame BorderColor="#078ff0" VerticalOptions="Fill" BackgroundColor="White" CornerRadius="20" Padding="8">
+                                    <StackLayout >
+                                        <StackLayout Padding="0" >
+                                            <Frame CornerRadius="100" 
+                                               HeightRequest="140" WidthRequest="140"
+                                               HorizontalOptions="Center" Padding="0" IsClippedToBounds="True">
+                                            <Image Source="ic_usericon.png"  x:Name="candidateimage" 
+                                               HorizontalOptions="Center" Aspect="Fill"
+                                               VerticalOptions="Center" />
+                                            </Frame>
+                                            <ImageButton Source="ic_camera.png" x:Name="imgbtn_uploadimage" BackgroundColor="Transparent" Clicked="imgbtn_uploadimage_Clicked"></ImageButton>
+                                        </StackLayout>
+
+                                        <StackLayout x:Name="stack_candidatedata" >
+                                            <Label x:Name="lbl_header" BackgroundColor="#078ff0" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="20"  FontAttributes="Bold"   HorizontalTextAlignment="Center"/>
+
+                                            <Grid  RowSpacing="10">
+                                                <!--<Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="4.5*"/>
+                                                <ColumnDefinition Width="5.5*"/>
+
+                                            </Grid.ColumnDefinitions>-->
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                    <RowDefinition Height="auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Label Grid.Row="1" Grid.Column="0" Text="Registration No." TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                                <Label  Grid.Row="2" Grid.Column="0" x:Name="Label_registrationnumber" TextColor="Black"  FontSize="16"/>
+
+                                                <Label Grid.Row="3" Grid.Column="0" Text="Exchange Name" TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                                <Label  Grid.Row="4" Grid.Column="0" x:Name="Label_XchName"  TextColor="Black"  FontSize="16"/>
+
+                                                <Label Grid.Row="5" Grid.Column="0" Text="Registration Date" TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                                <Label  Grid.Row="6" Grid.Column="0" x:Name="Label_RegDate"  TextColor="Black"  FontSize="16"/>
+
+                                                <Label Grid.Row="7" Grid.Column="0" Text="Valid Upto" TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                                <Label  Grid.Row="8" Grid.Column="0" x:Name="Label_ValidUpto"  TextColor="Black"   FontSize="16"/>
+
+                                                <Label Grid.Row="9" Grid.Column="0" Text="Application Status" TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                                <Label  Grid.Row="10" Grid.Column="0" x:Name="Label_ApplicationStatus" FontAttributes="Bold"   FontSize="16"/>
+
+                                            </Grid>
+
+
+
+                                        </StackLayout>
+
+                                        <StackLayout x:Name="stack_newuserdata" IsVisible="false">
+
+                                            <Label  Text="Mobile No." TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                            <Label   x:Name="Label_mob" TextColor="Black"  FontSize="16"/>
+
+
+                                            <Label  Text="Email Id" TextColor="#00468C" FontSize="16" FontAttributes="Bold"/>
+                                            <Label   x:Name="Label_email" TextColor="Black"  FontSize="16"/>
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+
+
+
+                            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                                <Button IsVisible="false"  x:Name="btn_viewdetails" FontSize="18" Text="View Details" Margin="0,10,0,5" BackgroundColor="#078ff0" TextColor="White" CornerRadius="10"  HorizontalOptions="FillAndExpand" Clicked="btn_viewdetails_Clicked" Padding="5" FontAttributes="Bold"/>
+                                <Button  x:Name="btn_newregister" FontSize="18" Text="New Registration" Margin="0,5,0,5" BackgroundColor="#078ff0" TextColor="White" CornerRadius="10"  HorizontalOptions="FillAndExpand" Clicked="btn_newregister_Clicked" Padding="10" FontAttributes="Bold"/>
+                                <Button  x:Name="btn_alreadyregister" FontSize="18" Text="Already Registered With Employment Exchange ?" Margin="0,5,0,5" BackgroundColor="#078ff0" TextColor="White" CornerRadius="10"  HorizontalOptions="FillAndExpand" Clicked="btn_alreadyregister_Clicked" Padding="10" FontAttributes="Bold"/>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </Frame>
+
+
+                </StackLayout>
+            </ScrollView>
+
+
+        </StackLayout>
+
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" WidthRequest="600" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+
+</ContentPage>

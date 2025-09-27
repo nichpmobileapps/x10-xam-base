@@ -1,0 +1,204 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.MiscellaneousDetailsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true">
+
+    <NavigationPage.TitleView>
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand">
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+            <Button  x:Name="btn_header" CornerRadius="10"  Text="Miscellaneous Details" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold"/>
+
+            <ScrollView VerticalOptions ="Fill">
+                <StackLayout  VerticalOptions ="Fill">
+
+                    <Frame  CornerRadius="10"  BorderColor="#058ef2" VerticalOptions="Fill">
+                        <StackLayout>
+                            <Label Text="ENTER PHYSICAL INFORMATION DETAILS" BackgroundColor="Navy" TextColor="White" Padding="5" FontSize="16"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Frame BorderColor="Navy" CornerRadius="20">
+                                <StackLayout>
+
+                                    <Label Text="EYESIGHT" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="5"  TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER EYESIGHT" x:Name="Entry_EYESIGHT" />
+
+                                    <Label Text="HEIGHT" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="5" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER HEIGHT" x:Name="Entry_HEIGHT" />
+
+                                    <Label Text="WEIGHT" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="5" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER WEIGHT" x:Name="Entry_WEIGHT" />
+
+                                    <Label Text="CHEST NORMAL" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="5" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER CHEST NORMAL" x:Name="Entry_CHESTNORMAL" />
+
+                                    <Label Text="CHEST EXPANDED" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="5" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER CHEST EXPANDED" x:Name="Entry_CHESTEXPANDED" />
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="ENTER SALARY EXPECTATIONS DETAILS (MONTHLY)" BackgroundColor="Navy" TextColor="White" Padding="5" FontSize="16"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Frame BorderColor="Navy" CornerRadius="20">
+                                <StackLayout>
+
+                                    <Label Text="SALARY IN HOME DISTRICT" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="8" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER SALARY IN HOME DISTRICT" x:Name="Entry_SALARYINHOMEDISTRICT" />
+
+                                    <Label Text="SALARY IN HP" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="8" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER SALARY IN HP" x:Name="Entry_SALARYINHP" />
+
+                                    <Label Text="SALARY OUTSIDE HP" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Entry Keyboard="Numeric" MaxLength="8" TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="ENTER SALARY OUTSIDE HP" x:Name="Entry_SALARYOUTSIDEHP" />
+
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="SELECT SECTOR OF INTEREST" BackgroundColor="Navy" TextColor="White" Padding="5" FontSize="16"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                            <Frame BorderColor="Navy" CornerRadius="20">
+                                <StackLayout>
+
+                                    <Label Text="SECTOR OF INTEREST" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                    <Picker TextColor="Black" TitleColor="Black" Title="SELECT SECTOR OF INTEREST" x:Name="picker_SectorOfInterest" SelectedIndexChanged="picker_SectorOfInterest_SelectedIndexChanged"/>
+
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="LANGUAGES KNOWN" BackgroundColor="Navy" TextColor="White" Padding="5" FontSize="16"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                       
+
+                          
+                                <StackLayout VerticalOptions="Fill">
+                                    <Grid x:Name="grid_data" BackgroundColor="White">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="auto"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                            <ColumnDefinition Width="2.5*"/>
+                                        </Grid.ColumnDefinitions>
+                                    <Label VerticalOptions="Center" FontSize="15"  HorizontalOptions="StartAndExpand"  Text="Language"  HorizontalTextAlignment="Start" TextColor="Navy"  Grid.Column="0" FontAttributes="Bold"/>
+                                        <Label VerticalOptions="Center" FontSize="15"  HorizontalOptions="Center" Text="Read"   TextColor="Navy" Grid.Column="1" FontAttributes="Bold"/>
+                                        <Label VerticalOptions="Center" FontSize="15"  HorizontalOptions="Center" Text="Write"  TextColor="Navy" Grid.Column="2" FontAttributes="Bold"/>
+                                        <Label VerticalOptions="Center" FontSize="15"  HorizontalOptions="Center" Text="Speak" TextColor="Navy" Grid.Column="3" FontAttributes="Bold"/>
+                                    </Grid>
+                                    <ListView x:Name="listview_language"   HasUnevenRows="True" SeparatorColor="Transparent"  SelectionMode="None"  VerticalOptions="Fill">
+                                        <ListView.ItemTemplate >
+                                            <DataTemplate>
+                                                <ViewCell >
+                                                    <Grid x:Name="grid_data" BackgroundColor="White">
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="auto"/>
+                                                        </Grid.RowDefinitions>
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="2.5*"/>
+                                                            <ColumnDefinition Width="2.5*"/>
+                                                            <ColumnDefinition Width="2.5*"/>
+                                                            <ColumnDefinition Width="2.5*"/>
+                                                        </Grid.ColumnDefinitions>
+
+
+                                                        <Label FontSize="16" Text="{Binding LangName}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="1" Grid.Column="0"/>
+
+                                                        <Image HeightRequest="30" Source="{Binding Readimg}"  HorizontalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                                                        <Image HeightRequest="30" Source="{Binding Writeimg}"  HorizontalOptions="Center" Grid.Row="1" Grid.Column="2"/>
+
+                                                        <Image HeightRequest="30" Source="{Binding Speakimg}"  HorizontalOptions="Center"  Grid.Row="1" Grid.Column="3"/>
+
+
+                                                        </Grid>
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+
+
+
+                                <Button  x:Name="btn_addlanguage" FontSize="16" Text="Add Language(s)"  BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="CenterAndExpand" Clicked="btn_addlanguage_Clicked" Padding="5" Margin="0" FontAttributes="Bold"/>
+
+                                </StackLayout>
+                           
+                       
+                        
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <Button IsVisible="false" x:Name="btn_cancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_cancel_Clicked" Padding="10"/>
+                <!--<Button  x:Name="btn_submit" FontSize="20" Text="Save" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>-->
+                <Button  IsVisible="false"  x:Name="btn_next" FontSize="20" Text="Next" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_next_Clicked" Padding="10" FontAttributes="Bold"/>
+                <Button  IsVisible="false"  x:Name="btn_submit" FontSize="20" Text="Save &amp; Next" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>
+
+            </StackLayout>
+        </StackLayout>
+
+
+
+        <ContentView x:Name="popupaddlanguage" BackgroundColor="#C0808080" Padding="10" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="white" Padding="10">
+                <Label x:Name="lbl_popuplanguage" BackgroundColor="#0072b6" TextColor="White" Text="Add Language" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <ScrollView>
+                    <StackLayout  Orientation="Vertical" >
+
+
+                        <Label Text="Select Language *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                        <Picker TextColor="Black" TitleColor="Black" Title="SELECT QUALIFICATION " x:Name="picker_popuplanguage" SelectedIndexChanged="picker_popuplanguage_SelectedIndexChanged"/>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Read" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <CheckBox x:Name="chkbx_read" ></CheckBox>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Write" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <CheckBox x:Name="chkbx_Write" ></CheckBox>
+                        </StackLayout>
+
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <Label Text="Speak" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <CheckBox x:Name="chkbx_Speak" ></CheckBox>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button  x:Name="btn_popuplanguagecancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popuplanguagecancel_Clicked" Padding="10"/>
+                    <Button  x:Name="btn_popuplanguagesubmit" FontSize="20" Text="Save" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popuplanguagesubmit_Clicked" Padding="10" FontAttributes="Bold"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" WidthRequest="600" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+
+</ContentPage>

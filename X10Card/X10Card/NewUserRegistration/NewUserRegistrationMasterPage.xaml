@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<FlyoutPage         
+        xmlns="http://xamarin.com/schemas/2014/forms"
+        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"                
+        x:Class="X10Card.NewUserRegistration.NewUserRegistrationMasterPage"  
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+        xmlns:local="clr-namespace:X10Card.NewUserRegistration"
+        ios:Page.UseSafeArea="true">
+
+    <FlyoutPage.Flyout>
+        <local:FlyoutMenuPage x:Name="flyoutPage" />
+    </FlyoutPage.Flyout>
+    <FlyoutPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+                <!--<local:FlyoutDetailsPage />-->
+            </x:Arguments>
+        </NavigationPage>
+    </FlyoutPage.Detail>
+</FlyoutPage>

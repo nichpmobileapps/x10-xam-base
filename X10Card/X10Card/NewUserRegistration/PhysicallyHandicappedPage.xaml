@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.PhysicallyHandicappedPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"  >
+    <NavigationPage.TitleView  >
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+
+            <StackLayout>
+                <Button x:Name="btn_header" CornerRadius="10"  Text="Physically Handicapped Details" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold"/>
+                <Frame  CornerRadius="10"  BorderColor="#058ef2" VerticalOptions="FillAndExpand" Padding="10">
+
+                    <StackLayout>
+
+                        <ListView x:Name="listview_PhysicallyHandicapped"   HasUnevenRows="True" SeparatorColor="#126b8a"  SelectionMode="None" >
+                            <ListView.ItemTemplate >
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Frame VerticalOptions="StartAndExpand" Margin="5" HasShadow="False" CornerRadius="20" BackgroundColor="White" BorderColor="#0072b6">
+                                            <StackLayout Orientation="Vertical">
+
+
+                                                <Label FontSize="16" Text="PH Type" TextColor="Navy"  HorizontalTextAlignment="Start" FontAttributes="Bold"  Grid.Row="0" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding PHTypeNm}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="0" Grid.Column="1"/>
+
+                                                <Label FontSize="16" Text="Percentage" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding Percentage}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" TextColor="Maroon" Grid.Row="1" Grid.Column="1"/>
+
+                                                <Label FontSize="16" Text="Issue Date" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding issuedt}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" TextColor="Maroon" Grid.Row="2" Grid.Column="1"/>
+
+                                                <Label FontSize="16" Text="Valid Upto Date" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="3" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding validuptodt}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="3" Grid.Column="1"/>
+
+                                                <Label FontSize="16" Text="Certificate No." TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="4" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding DocCertNo}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="4" Grid.Column="1"/>
+                                                
+                                                <Label FontSize="16" Text="Status" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="4" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding StatusDesc}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="4" Grid.Column="1"/>
+
+                                                <StackLayout Orientation="Horizontal">
+                                                    <ImageButton IsVisible="{Binding imgeditdeletevisibility}" x:Name="img_edit" CommandParameter="{Binding PHType}" Clicked="img_edit_Clicked"  HorizontalOptions="CenterAndExpand" Source="ic_edit" BackgroundColor="Transparent" HeightRequest="35" />
+                                                    <ImageButton  IsVisible="{Binding imgeditdeletevisibility}"  x:Name="img_delete" CommandParameter="{Binding PHType}" Clicked="img_delete_Clicked"  HorizontalOptions="CenterAndExpand" Source="ic_delete" BackgroundColor="Transparent" HeightRequest="35" />
+                                                    <ImageButton  IsVisible="{Binding pdfimgvisibility}" x:Name="img_pdf" CommandParameter="{Binding PHType}" Clicked="img_pdf_Clicked"  HorizontalOptions="CenterAndExpand" Source="ic_viewpdf.png" BackgroundColor="Transparent" HeightRequest="35" />
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Button CornerRadius="10" x:Name="btn_AddPhysicallyHandicapped" Text="Add Physically Handicapped Details" HorizontalOptions="CenterAndExpand" Padding="5"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold" Clicked="btn_AddPhysicallyHandicapped_Clicked"/>
+
+                    </StackLayout>
+
+
+                </Frame>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button IsVisible="false"  x:Name="btn_cancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_cancel_Clicked" Padding="10"/>
+                    <!--<Button  x:Name="btn_submit" FontSize="20" Text="Save" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>-->
+                    <Button  IsVisible="false"  x:Name="btn_next" FontSize="20" Text="Next" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_next_Clicked" Padding="10" FontAttributes="Bold"/>
+                    <Button  IsVisible="false"  x:Name="btn_submit" FontSize="20" Text="Save &amp; Next" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>
+
+                </StackLayout>
+            </StackLayout>
+
+
+
+        </StackLayout>
+
+
+
+        <ContentView x:Name="popupaddPhysicallyHandicapped" BackgroundColor="#C0808080" Padding="10" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="white" Padding="10">
+                <Label  BackgroundColor="#0072b6" TextColor="White" Text="Add Physically Handicapped Detail" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <Label Text="*Fields marked are mandatory" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Navy" FontSize="14" />
+
+                <ScrollView>
+                    <StackLayout  Orientation="Vertical" >
+
+
+                        <Label Text="SELECT PH TYPE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                        <Picker TextColor="Black" TitleColor="Black" Title="SELECT PH TYPE" x:Name="picker_PHTYPE" SelectedIndexChanged="picker_PHTYPE_SelectedIndexChanged"/>
+
+                        <Label Text="ENTER PERCENTAGE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                        <Entry x:Name="entry_PERCENTAGE" MaxLength="3" Keyboard="Numeric" Placeholder="ENTER PERCENTAGE" TextColor="Black"  FontSize="16" ></Entry>
+
+
+                        <Label Text="SELECT REGISTRATION DATE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                        <StackLayout HorizontalOptions="FillAndExpand" >
+                            <Entry TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="Select Registration Date" x:Name="Entry_RegistrationDate" Focused="Entry_RegistrationDate_Focused" />
+                            <DatePicker x:Name="datepicker_RegistrationDate" IsVisible="false"  Format="dd/MM/yyyy" DateSelected="datepicker_RegistrationDate_DateSelected"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+                        <Label Text="PH TYPE Document Details" BackgroundColor="Navy" TextColor="White" Padding="5" FontSize="16"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                        <Frame BorderColor="Navy" CornerRadius="20">
+                            <StackLayout>
+
+
+                                <Label Text="SELECT ISSUE DATE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                <StackLayout HorizontalOptions="FillAndExpand" >
+                                    <Entry TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="SELECT ISSUE DATE" x:Name="Entry_issuedate" Focused="Entry_issuedate_Focused" />
+                                    <DatePicker x:Name="datepicker_issuedate" IsVisible="false"  Format="dd/MM/yyyy" DateSelected="datepicker_issuedate_DateSelected"  HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+
+                                <Label Text="SELECT VALID UPTO DATE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                <StackLayout HorizontalOptions="FillAndExpand" >
+                                    <Entry TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="SELECT VALID UPTO DATE" x:Name="Entry_validuptodate" Focused="Entry_validuptodate_Focused" />
+                                    <DatePicker x:Name="datepicker_validupto" IsVisible="false"  Format="dd/MM/yyyy" DateSelected="datepicker_validupto_DateSelected"  HorizontalOptions="FillAndExpand"/>
+                                </StackLayout>
+
+                                <Label Text="ENTER CERTIFICATE NO *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                <Entry x:Name="entry_certificateno"   Placeholder="ENTER CERTIFICATE NO" TextColor="Black"  FontSize="16" ></Entry>
+
+                                <Label Text="ENTER REMARKS *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                <Entry x:Name="entry_REMARKS"   Placeholder="ENTER REMARKS" TextColor="Black"  FontSize="16" ></Entry>
+
+
+                                <StackLayout Orientation="Horizontal" >
+                                    <Label x:Name="lbl_doc1" Text="DOCUMENT" TextColor="Navy" FontSize="16" HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" FontAttributes="Bold" Padding="5"/>
+                                    <Label x:Name="lbl_pdf1" IsVisible="false" Text="PDF Uploaded Successfully"  VerticalTextAlignment="Center" />
+                                    <Button x:Name="btn_uploaddoc1" Text="Choose File..." Clicked="btn_uploaddoc1_Clicked"></Button>
+                                    <ImageButton  IsVisible="false"  x:Name="img_pdfedit"  Clicked="img_pdfedit_Clicked"  HorizontalOptions="CenterAndExpand" Source="ic_viewpdf.png" BackgroundColor="Transparent" HeightRequest="35" />
+
+                                </StackLayout>
+
+
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button  x:Name="btn_popupPhysicallyHandicappedcancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popupPhysicallyHandicappedcancel_Clicked" Padding="10"/>
+                    <Button  x:Name="btn_popupPhysicallyHandicappedsubmit" FontSize="20" Text="Save" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popupPhysicallyHandicappedsubmit_Clicked" Padding="10" FontAttributes="Bold"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ContentView>
+
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" WidthRequest="600" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+
+</ContentPage>

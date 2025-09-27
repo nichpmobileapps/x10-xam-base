@@ -1,0 +1,330 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.HomePage" xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true" BackgroundColor="White"   >
+
+    <NavigationPage.TitleView>
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png"  Clicked="Btn_home_Clicked"/>
+        <ToolbarItem IconImageSource="refresh.png"  Clicked="Btn_refresh_Clicked"/>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+            <ScrollView VerticalOptions="FillAndExpand" Orientation="Vertical">
+                <StackLayout VerticalOptions="FillAndExpand">
+                    <Frame BorderColor="#078ff0" VerticalOptions="Fill" BackgroundColor="White" CornerRadius="10">
+                        <StackLayout>
+                            <StackLayout Orientation="Vertical" HorizontalOptions="Center" IsVisible="false">
+                                <Image Source="ic_usericon.png" x:Name="candidateimage"  Aspect="AspectFit"  WidthRequest="50" HeightRequest="50"/>
+                            </StackLayout>
+                            <Label x:Name="lbl_header" BackgroundColor="#0072b6" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="18"  FontAttributes="Bold"   HorizontalTextAlignment="Center"/>
+
+                            <Grid RowSpacing="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="4.5*"/>
+                                    <ColumnDefinition Width="5.5*"/>
+
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Label Grid.Row="0" Grid.Column="0" x:Name="Label_RenewalDatetext" Text="Renewal Date" FontAttributes="Bold" TextColor="#21610B" FontSize="16"/>
+                                <Label  Grid.Row="0" Grid.Column="1" x:Name="Label_RenewalDate" TextColor="#21610B" FontAttributes="Bold" FontSize="16"/>
+
+                                <Label Grid.Row="1" Grid.Column="0" Text="Registration No." TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="1" Grid.Column="1" x:Name="Label_registrationnumber"  FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="2" Grid.Column="0" Text="Exchange" TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="2" Grid.Column="1" x:Name="Label_XchName" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="3" Grid.Column="0" Text="Registration Date" TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="3" Grid.Column="1" x:Name="Label_RegDate" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="4" Grid.Column="0" Text="Address" TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="4" Grid.Column="1" x:Name="Label_Address" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="5" Grid.Column="0" Text="Category" TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="5" Grid.Column="1" x:Name="Label_Category" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="6" Grid.Column="0" Text="Date Of Birth"  TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="6" Grid.Column="1" x:Name="Label_DOB" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="7" Grid.Column="0" Text="Employment Status" TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="7" Grid.Column="1" x:Name="Label_EmpStatus" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="8" Grid.Column="0" Text="Marital Status" TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="8" Grid.Column="1" x:Name="Label_MaritalStatus" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                                <Label Grid.Row="9" Grid.Column="0" Text="Mobile No." TextColor="Black" FontSize="16"/>
+                                <Label  Grid.Row="9" Grid.Column="1" x:Name="Label_MobileNo" FontAttributes="Bold" TextColor="Black" FontSize="16"/>
+
+                            </Grid>
+
+                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#EF5627"/>
+                            <Button Clicked="btn_renew_Clicked" IsVisible="false" Text="Renew" x:Name="btn_renew" FontAttributes="Bold" FontSize="18" TextColor="White" BackgroundColor="#FF9933"/>
+                            <Label IsVisible="false" BackgroundColor="Transparent" x:Name="lbl_expired" Text="Expired. Kindly contact regional exchange." TextColor="Red" FontSize="16" HorizontalOptions="FillAndExpand" FontAttributes="Bold"/>
+                            <Label  IsVisible="false" BackgroundColor="Transparent" x:Name="lbl_renewtext" Text="Renewal button will activate during grace period." TextColor="ForestGreen" FontSize="16" HorizontalOptions="FillAndExpand" FontAttributes="Bold"/>
+                            <BoxView HorizontalOptions="FillAndExpand" HeightRequest="2" Color="#EF5627"/>
+
+
+                        </StackLayout>
+                    </Frame>
+                    <!--<Label Padding="3" FontAttributes="Bold" FontSize="16"  BackgroundColor="#0072b6" TextColor="White" Text="Details"  HorizontalTextAlignment="Center"/>-->
+
+                    <StackLayout Orientation="Horizontal">
+                        <Button Clicked="btn_qualification_Clicked" x:Name="btn_qualification"  HorizontalOptions="FillAndExpand" Text="Qualification"   FontSize="16"   WidthRequest="150" BackgroundColor="#078ff0" TextColor="White" FontAttributes="Bold"   />
+                        <Button Clicked="btn_occupation_Clicked" x:Name="btn_occupation"  HorizontalOptions="FillAndExpand" Text="Occupation"  FontSize="16" BackgroundColor="#078ff0"  WidthRequest="150" TextColor="White" FontAttributes="Bold" />
+                    </StackLayout>
+                    
+                    <StackLayout Orientation="Horizontal" >
+                        <Button Clicked="btn_Vacancy_Clicked" x:Name="btn_Vacancy"  HorizontalOptions="FillAndExpand" Text="Vacancy"  FontSize="16" BackgroundColor="#078ff0"  WidthRequest="150" TextColor="White" FontAttributes="Bold" />
+                        <Button Clicked="btn_sponsorship_Clicked" x:Name="btn_sponsorship"  HorizontalOptions="FillAndExpand" Text="Sponsorship"   FontSize="16"  WidthRequest="150" BackgroundColor="#078ff0" TextColor="White" FontAttributes="Bold"  />
+                    </StackLayout>
+
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="btn_JobFair_Clicked"/>
+                        </StackLayout.GestureRecognizers>
+                        <Frame Padding="0" BorderColor="#078ff0" VerticalOptions="FillAndExpand" BackgroundColor="White" CornerRadius="10" HasShadow="true">
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="Transparent">
+                                <Button BackgroundColor="Transparent"  x:Name="btn_JobFair" Clicked="btn_JobFair_Clicked"  HorizontalOptions="Center" Text="Job Fair"  FontSize="16" TextColor="#2196f3"  FontAttributes="Bold"  />
+                                <Image Source="Next_page.gif" IsAnimationPlaying="True" WidthRequest="30" HorizontalOptions="Start" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout>
+                <Label x:Name="lbl_lastupdated" FontAttributes="Bold" FontSize="16"  TextColor="Navy" Text=""  HorizontalTextAlignment="Center"/>
+            </StackLayout>
+
+            <Grid VerticalOptions="End" Style="{StaticResource FooterGridStyle}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="0">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tab_Home_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="Tab_Home_Image" Source="ic_home.png" HeightRequest="20"/>
+                    <Label x:Name="Tab_Home_Label" Text="Home" Style="{StaticResource LabelStyle_TabMenu}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="1">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tab_UpdateEmpStatus_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="Tab_UpdateEmpStatus_Image" Source="ic_update.png" HeightRequest="20"/>
+                    <Label x:Name="Tab_UpdateEmpStatus_Label" Text="Employment Status" Style="{StaticResource LabelStyle_TabMenu}"/>
+                </StackLayout>
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="2">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tab_ViewAllowances_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="Tab_ViewAllowances_Image" Source="ic_allowance.png" HeightRequest="20"/>
+                    <Label x:Name="Tab_ViewAllowances_Label" Text="Allowances" Style="{StaticResource LabelStyle_TabMenu}"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Grid.Row="0" Grid.Column="3" >
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Tab_Settings_Tapped"/>
+                    </StackLayout.GestureRecognizers>
+                    <Image x:Name="Tab_Settings_Image" Source="ic_more.png" HeightRequest="20"/>
+                    <Label x:Name="Tab_Settings_Label" Text="More" Style="{StaticResource LabelStyle_TabMenu}"/>
+                </StackLayout>
+
+            </Grid>
+
+        </StackLayout>
+
+        <ContentView x:Name="popupqualification" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popupqualification" BackgroundColor="#0072b6" TextColor="White" Text="Qualification Details" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <ListView x:Name="listview_qualification" HasUnevenRows="True" SeparatorColor="Transparent"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame VerticalOptions="StartAndExpand" Margin="10"  HasShadow="True" CornerRadius="10" Padding="0" BackgroundColor="White" BorderColor="Silver">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Padding="10" Text="{Binding QualDesc}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                    </StackLayout>
+                                </Frame>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="#0072b6" TextColor="White" FontAttributes="Bold"  x:Name="popupqualificationCancel" Clicked="popupqualificationCancel_Clicked" Text="Close" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="popupOccupation" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popupOccupation" BackgroundColor="#0072b6" TextColor="White" Text="Occupation Details" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <ListView x:Name="listview_Occupation" HasUnevenRows="True" SeparatorColor="Transparent"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame VerticalOptions="StartAndExpand" Margin="10"  HasShadow="True" CornerRadius="10" Padding="0" BackgroundColor="White" BorderColor="Silver">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Padding="10" Text="{Binding NCODesc}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="#0072b6" TextColor="White" FontAttributes="Bold"  x:Name="popupOccupationCancel" Clicked="popupOccupationCancel_Clicked" Text="Close" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="popupvacancy" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popupvacancy" BackgroundColor="#0072b6" TextColor="White" Text="All Vacancy Details" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <ListView x:Name="listview_vacancy" HasUnevenRows="True" SeparatorColor="Transparent"  SelectionMode="None"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="5" VerticalOptions="StartAndExpand" Margin="10"  HasShadow="True" CornerRadius="10"  BackgroundColor="White" BorderColor="Silver">
+                                   
+
+                                    <StackLayout Orientation="Vertical" Padding="0" Margin="0">
+
+                                        <Label  Text="Employer Name" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label  Text="{Binding EmployerName}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon" VerticalOptions="Center" />
+
+                                        <Label Text="Description" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding vacdesc}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="No. Of Post" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding NoofPost}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Designation" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding VacDesgOfPost}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Age Between" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding agebw}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Interview Datetime" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding intdttm}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Interview Place" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding IntPlace}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Publish Date" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding PublishDt}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="#0072b6" TextColor="White" FontAttributes="Bold"  x:Name="popupvacancyCancel" Clicked="popupvacancyCancel_Clicked" Text="Close" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="popupsponsorship" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popupsponsorship" BackgroundColor="#0072b6" TextColor="White" Text="Sponsorship Details" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <ListView x:Name="listview_sponsorship" HasUnevenRows="True" SeparatorColor="Transparent" SelectionMode="None"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame Padding="5" VerticalOptions="StartAndExpand" Margin="10"  HasShadow="True" CornerRadius="10" BackgroundColor="White" BorderColor="Navy">
+                                    <StackLayout Orientation="Vertical" Padding="2">
+                                        <Label  Text="Employer Name" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label  Text="{Binding EmployerName}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon" VerticalOptions="Center" />
+
+                                        <Label Text="Description" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding vacdesc}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="No. Of Post" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding NoofPost}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Designation" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding VacDesgOfPost}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Age Between" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding agebw}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Interview Datetime" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding intdttm}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Interview Place" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding IntPlace}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Label Text="Publish Date" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Navy" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding PublishDt}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Maroon"  VerticalOptions="Center" />
+
+                                        <Frame Padding="10" IsVisible="{Binding ApplyDtVisibility}" VerticalOptions="StartAndExpand"  HasShadow="False" CornerRadius="10" BackgroundColor="White" BorderColor="#0072b6">
+                                            <StackLayout Orientation="Vertical">
+                                                <Label  IsVisible="{Binding ApplyDtVisibility}" FontSize="16" Text="Apply Date" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="12" Grid.Column="0"/>
+                                                <Label  IsVisible="{Binding ApplyDtVisibility}" FontSize="16" Text="{Binding ApplyDt}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="13" Grid.Column="0"/>
+
+                                                <Label  IsVisible="{Binding Attend_DtVisibility}" FontSize="16" Text="Attended Date" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="12" Grid.Column="0"/>
+                                                <Label  IsVisible="{Binding Attend_DtVisibility}" FontSize="16" Text="{Binding Attend_Dt}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="13" Grid.Column="0"/>
+
+                                                <Label  IsVisible="{Binding Selected_DtVisibility}" FontSize="16" Text="Selected Date" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="12" Grid.Column="0"/>
+                                                <Label IsVisible="{Binding Selected_DtVisibility}"  FontSize="16" Text="{Binding Selected_Dt}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="13" Grid.Column="0"/>
+
+                                                <Label  IsVisible="{Binding joindtVisibility}" FontSize="16" Text="Join Date" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="12" Grid.Column="0"/>
+                                                <Label IsVisible="{Binding joindtVisibility}"  FontSize="16" Text="{Binding joindt}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="13" Grid.Column="0"/>
+                                            </StackLayout>
+                                        </Frame>
+                                    </StackLayout>
+                                </Frame>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="#0072b6" TextColor="White" FontAttributes="Bold"  x:Name="popupsponsorshipCancel" Clicked="popupsponsorshipCancel_Clicked" Text="Close" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame Style="{StaticResource FrameLoadingStyle}">
+                    <StackLayout Orientation="Horizontal" Padding="6">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="Lbl_PleaseWait" Text="Please Wait ..." Style="{StaticResource LabelStyle}" HorizontalOptions="FillAndExpand" WidthRequest="600"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+  
+    </Grid>
+</ContentPage>

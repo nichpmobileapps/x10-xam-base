@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.SignUpCandidatePage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:local="clr-namespace:X10Card.Models"
+             ios:Page.UseSafeArea="true"  >
+    <NavigationPage.TitleView  >
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+            <Button CornerRadius="10"  Text="Sign Up" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold"/>
+            <Label Text="*Fields marked are mandatory" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Navy" FontSize="14" />
+
+            <ScrollView VerticalOptions ="FillAndExpand">
+                <StackLayout>
+                   
+                    <Frame  CornerRadius="10"  BorderColor="#058ef2" VerticalOptions="FillAndExpand" >
+                        <StackLayout  Orientation="Vertical" >
+
+                         
+                            <Label Text="Enter Either Mobile Number or Email-Id or Both *" HorizontalOptions="FillAndExpand" FontAttributes="Bold" TextColor="Navy" FontSize="16"  />
+                            <!--<Label Text="(This will be your Login Id)" HorizontalOptions="Start" HorizontalTextAlignment="Start" TextColor="Navy" FontSize="14" />-->
+
+                            <Frame  CornerRadius="10"  BorderColor="Silver" VerticalOptions="Fill" Padding="15" Margin="0,10,0,20" >
+                                <StackLayout>
+                                    <StackLayout x:Name="stack_mobile" >
+                                        <Label  Text="Mobile No." TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                        <Entry x:Name="entry_mobileno" Placeholder="Enter Mobile No." MaxLength="10" Keyboard="Numeric" TextColor="Black"  FontSize="16" ></Entry>
+                                    </StackLayout>
+                                    <StackLayout x:Name="stack_email" >
+                                        <Label  Text="Email-Id" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                        <Entry x:Name="entry_email" Placeholder="Enter Email-Id" MaxLength="50" Keyboard="Email" TextColor="Black"  FontSize="16" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+
+                            <Label Text="Enter Password *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal" >
+                                <Entry Placeholder="Enter Password"   x:Name="entry_password" HorizontalOptions="FillAndExpand"
+                                 IsPassword="{Binding Source={x:Reference ShowPasswordActualTrigger}, Path=HidePassword}"/>
+                                <ImageButton VerticalOptions="Center"
+                                     Margin="0,0,0,0"
+                                     HeightRequest="20"
+                                     HorizontalOptions="End"
+                                     Source="ic_eye_hide">
+                                    <ImageButton.Triggers>
+                                        <EventTrigger Event="Clicked">
+                                            <local:ShowPasswordTriggerAction ShowIcon="ic_eye"
+                                                                    HideIcon="ic_eye_hide"
+                                                                    x:Name="ShowPasswordActualTrigger"/>
+                                        </EventTrigger>
+                                    </ImageButton.Triggers>
+                                </ImageButton>
+                            </StackLayout>
+
+                            <Label Text="Enter Confirm Password *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal" >
+                                <Entry Placeholder="Enter Confirm Password"  x:Name="entry_Confirmpassword" HorizontalOptions="FillAndExpand"
+                                 IsPassword="True"/>
+
+                            </StackLayout>
+
+
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                <!--<Button  x:Name="btn_cancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_cancel_Clicked" Padding="10"/>-->
+                <Button  x:Name="btn_submit" FontSize="20" Text="Sign Up" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+
+
+        <ContentView x:Name="popupotp" BackgroundColor="#C0808080" Padding="10" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="white" Padding="10">
+                <Label x:Name="lbl_popupheader" BackgroundColor="#0072b6" TextColor="White" Text="Enter OTP" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+
+                <StackLayout  Orientation="Vertical" >
+                    <Label  Text="OTP *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                    <Entry x:Name="entry_activationotp" Placeholder="Enter Mobile No." MaxLength="10" Keyboard="Numeric" TextColor="Black"  FontSize="16" ></Entry>
+
+                </StackLayout>
+
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button  x:Name="btn_popupotpcancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="Red" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popupotpcancel_Clicked" Padding="10"/>
+                    <Button  x:Name="btn_popupotpsubmit" FontSize="20" Text="Activate" Margin="0,10,0,10" BackgroundColor="DarkGreen" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popupotpsubmit_Clicked" Padding="10" FontAttributes="Bold"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ContentView>
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" WidthRequest="600" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+
+</ContentPage>

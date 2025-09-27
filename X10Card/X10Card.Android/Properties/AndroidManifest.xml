@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="18" android:versionName="18.0" package="nic.hp.employment">
+	<uses-sdk android:minSdkVersion="26" android:targetSdkVersion="34" />
+	<application android:label="X10Card" android:theme="@style/MainTheme" android:icon="@drawable/ic_launcher" android:exported="false" android:allowBackup="false" android:usesCleartextTraffic="true">
+		<provider android:name="androidx.core.content.FileProvider" android:authorities="nic.hp.employment.fileprovider" android:exported="false" android:grantUriPermissions="true">
+			<meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"></meta-data>
+		</provider>
+	</application>
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.CAMERA" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>

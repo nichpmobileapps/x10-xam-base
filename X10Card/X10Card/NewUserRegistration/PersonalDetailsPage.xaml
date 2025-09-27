@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.PersonalDetailsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"  >
+    
+    <NavigationPage.TitleView  >
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+
+            <Button x:Name="btn_header" CornerRadius="10"  Text="Personal Details" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold"/>
+
+            <Label Text="*Fields marked are mandatory" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Navy" FontSize="14" />
+
+            <!--<ScrollView VerticalOptions ="FillAndExpand">-->
+                <StackLayout>
+                   
+                    <Frame  CornerRadius="10"  BorderColor="#058ef2" VerticalOptions="FillAndExpand" >
+                    <ScrollView VerticalOptions ="FillAndExpand">
+                        <StackLayout  Orientation="Vertical" >
+                            <StackLayout x:Name="stack_registration" IsVisible="false">
+                                <Label Text="REGISTRATION DATE" TextColor="Navy" FontSize="16" FontAttributes="Bold" />
+                                <Entry x:Name="entry_registrationdate" IsReadOnly="true" TextColor="Black"  FontSize="16" ></Entry>
+
+                                <Label Text="RENEWAL DATE" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                <Entry x:Name="entry_renewaldate" IsReadOnly="true" TextColor="Black"  FontSize="16" ></Entry>
+                            </StackLayout>
+
+                            <Label Text="EMPLOYMENT EXCHANGE DISTRICT *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Picker TextColor="Black" TitleColor="Black" Title="SELECT DISTRICT" x:Name="picker_district" SelectedIndexChanged="picker_district_SelectedIndexChanged"/>
+
+                            <Label Text="EMPLOYMENT EXCHANGE NAME *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Picker TextColor="Black" TitleColor="Black" Title="SELECT EXCHANGE NAME " x:Name="picker_exchangename" SelectedIndexChanged="picker_exchangename_SelectedIndexChanged"/>
+
+                            <Label Text="ENTER APPLICANT NAME *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Entry x:Name="entry_applicantname" MaxLength="50" Placeholder="Enter Applicant Name" TextColor="Black"  FontSize="16" ></Entry>
+                            
+                            <Label Text="SELECT" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal"  HorizontalOptions="FillAndExpand">
+                                <RadioButton x:Name="rd_Father" Content="FATHER NAME" GroupName="relationgroup" TextColor="Navy"  FontAttributes="Bold" FontSize="16" IsChecked="True" CheckedChanged="rd_Father_CheckedChanged"/>
+                                <RadioButton x:Name="rd_Husband" Content="HUSBAND NAME" GroupName="relationgroup" TextColor="Navy"  FontAttributes="Bold" FontSize="16" CheckedChanged="rd_Father_CheckedChanged"/>
+                            </StackLayout>
+                            <Entry x:Name="entry_fatherhusbname" MaxLength="50" Placeholder="ENTER FATHER/HUSBAND NAME" TextColor="Black"  FontSize="16" ></Entry>
+
+                            <Label Text="ENTER MOTHER NAME " TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Entry x:Name="entry_mothername" MaxLength="50" Placeholder="ENTER MOTHER NAME" TextColor="Black"  FontSize="16" ></Entry>
+
+                            <Label Text="SELECT MARITAL STATUS *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Picker TextColor="Black" TitleColor="Black" Title="SELECT MARITAL STATUS " x:Name="picker_maritalstatus" SelectedIndexChanged="picker_maritalstatus_SelectedIndexChanged"/>
+
+                            <Label Text="SELECT DATE OF BIRTH *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <StackLayout HorizontalOptions="FillAndExpand" >
+                                <Entry TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="SELECT DATE OF BIRTH" x:Name="Entry_dob" Focused="Entry_dob_Focused" />
+                                <DatePicker x:Name="datepicker_dob" IsVisible="false"  Format="dd/MM/yyyy" DateSelected="datepicker_dob_DateSelected"  HorizontalOptions="FillAndExpand"/>
+                            </StackLayout>
+
+                            <Label Text="SELECT GENDER *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                                <RadioButton x:Name="rd_Male" Content="MALE" GroupName="gendergroup" TextColor="Navy"   HorizontalOptions="FillAndExpand" FontAttributes="Bold" FontSize="16" IsChecked="True" CheckedChanged="rd_Male_CheckedChanged"/>
+                                <RadioButton x:Name="rd_Female" Content="FEMALE" GroupName="gendergroup" TextColor="Navy"   HorizontalOptions="FillAndExpand" FontAttributes="Bold" FontSize="16" CheckedChanged="rd_Male_CheckedChanged"/>
+                            </StackLayout>
+
+                            <Label Text="SELECT RELIGION" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Picker TextColor="Black" TitleColor="Black" Title="SELECT RELIGION" x:Name="picker_religion" SelectedIndexChanged="picker_religion_SelectedIndexChanged"/>
+
+                            <Label Text="SELECT CATEGORY " TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                            <Picker TextColor="Black" TitleColor="Black" Title="SELECT CATEGORY " x:Name="picker_category" SelectedIndexChanged="picker_category_SelectedIndexChanged"/>
+
+                            <StackLayout x:Name="stack_catg" IsVisible="false">
+                                <Label Text="Category Document Details" BackgroundColor="Navy" TextColor="White" Padding="5" FontSize="16"  FontAttributes="Bold" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
+                                <Frame BorderColor="Navy" CornerRadius="20">
+                                    <StackLayout>
+                                        <Label Text="ISSUE DATE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                        <StackLayout HorizontalOptions="FillAndExpand" >
+                                            <Entry TextColor="Black" PlaceholderColor="Black" HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="SELECT ISSUE DATE" x:Name="Entry_issuedate" Focused="Entry_issuedate_Focused" />
+                                            <DatePicker x:Name="datepicker_issuedate" IsVisible="false"  Format="dd/MM/yyyy" DateSelected="datepicker_issuedate_DateSelected"  HorizontalOptions="FillAndExpand"/>
+                                        </StackLayout>
+
+                                        <Label Text="CERTIFICATE NO *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                                        <Entry x:Name="entry_certificateno"   Placeholder="ENTER CERTIFICATE NO" TextColor="Black"  FontSize="16" ></Entry>
+
+                                        <StackLayout Orientation="Horizontal" >
+                                            <Label x:Name="lbl_doc1" Text="Document" TextColor="Navy" FontSize="16" HorizontalOptions="FillAndExpand"  VerticalTextAlignment="Center" FontAttributes="Bold" Padding="5"></Label>
+                                            <Label x:Name="lbl_pdf1" IsVisible="false" Text="PDF Uploaded Successfully"  VerticalTextAlignment="Center" ></Label>
+                                            <Button x:Name="btn_uploaddoc1" Text="Choose File..." Clicked="btn_uploaddoc1_Clicked"></Button>
+                                            <ImageButton IsVisible="false" x:Name="btn_viewdoc" Source="ic_viewpdf.png" Clicked="btn_viewdoc_Clicked" HeightRequest="45" BackgroundColor="Transparent"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </StackLayout>
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+                    
+                </StackLayout>
+            <!--</ScrollView>-->
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                <Label IsVisible="false" Padding="10" x:Name="Label_ApplicationStatus" FontSize="18" FontAttributes="Bold" TextColor="White"  HorizontalOptions="CenterAndExpand"></Label>
+                <!--<Button  x:Name="btn_cancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_cancel_Clicked" Padding="10"/>-->
+                <Button  IsVisible="false"  x:Name="btn_next" FontSize="20" Text="Next" Margin="0" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_next_Clicked" Padding="10" FontAttributes="Bold"/>
+                <Button  IsVisible="false"  x:Name="btn_submit" FontSize="20" Text="Save &amp; Next" Margin="10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>
+                <Button IsVisible="false" x:Name="btn_takelive" FontSize="20" Text="Take Live" Margin="0" BackgroundColor="DarkGreen" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_takelive_Clicked" Padding="10" FontAttributes="Bold"/>
+            </StackLayout>
+        </StackLayout>
+
+        <ContentView x:Name="popupExistingUser" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popupExistingUser" BackgroundColor="#0072b6" TextColor="White" Text="EXISTING CANDIDATE(s) DETAILS" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <ListView x:Name="listview_ExistingUser" HasUnevenRows="True" SeparatorColor="Transparent"  >
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <Frame VerticalOptions="StartAndExpand" Margin="10"  HasShadow="True" CornerRadius="10" Padding="0" BackgroundColor="White" BorderColor="Silver">
+                                    <StackLayout Orientation="Vertical" Padding="10">
+                                      
+                                        <Label  Text="Registration No." FontSize="16" HorizontalOptions="FillAndExpand" TextColor="#00468C" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label  Text="{Binding RegistrationNo}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Black"  VerticalOptions="Center" />
+
+                                        <Label Text="Name" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="#00468C" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label  Text="{Binding UserName}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Black"  VerticalOptions="Center" />
+
+                                        <Label  Text="Date Of Birth" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="#00468C" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label Text="{Binding DOB}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Black"  VerticalOptions="Center" />
+
+                                        <Label  Text="Father/Husband Name " FontSize="16" HorizontalOptions="FillAndExpand" TextColor="#00468C" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label  Text="{Binding FAtherHusbandSelection}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Black"  VerticalOptions="Center" />
+
+                                        <Label  Text="Address" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="#00468C" FontAttributes="Bold" VerticalOptions="Center" />
+                                        <Label  Text="{Binding Address}" FontSize="16" HorizontalOptions="FillAndExpand" TextColor="Black"  VerticalOptions="Center" />
+
+
+                                        <Button CornerRadius="10" FontSize="18" CommandParameter="{Binding RegistrationNo}" BackgroundColor="DarkGreen" TextColor="White" FontAttributes="Bold"  x:Name="popupExistingUserMap" Clicked="popupExistingUserMap_Clicked" Text="Map With Login Id" Margin="5" HorizontalOptions="CenterAndExpand" />
+
+                                    </StackLayout>
+                                </Frame>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="#0072b6" TextColor="White" FontAttributes="Bold"  x:Name="popupExistingUserCancel" Clicked="popupExistingUserCancel_Clicked" Text="Close" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+        
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" WidthRequest="600" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+
+</ContentPage>

@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.EmploymentDetailsPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true" IconImageSource="ic_update.png">
+    <NavigationPage.TitleView>
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" />
+
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+    <Grid>
+        <StackLayout Margin="9">
+            <!--<Label x:Name="lbl_header" BackgroundColor="#0072b6" TextColor="White" HorizontalOptions="FillAndExpand" VerticalOptions="Center" FontSize="20"  FontAttributes="Bold"   HorizontalTextAlignment="Center"/>-->
+            <Button x:Name="btn_header" CornerRadius="10"  Text="Employment Details" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold"/>
+            <Label Text="*Fields marked are mandatory" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Navy" FontSize="14" />
+
+
+
+            <StackLayout VerticalOptions="FillAndExpand">
+
+                <Frame BorderColor="#078ff0" VerticalOptions="FillAndExpand" BackgroundColor="White" CornerRadius="10"  Padding="5">
+                    <ScrollView VerticalOptions="FillAndExpand">
+                        <StackLayout>
+
+                            <Label TextColor="Navy" x:Name="lbl_EmploymentStatus" Text="Select Employment Status *" FontSize="16"   FontAttributes="Bold"  />
+                            <Picker TextColor="Black" TitleColor="Black" Title="Select Employment Status" x:Name="Picker_EmploymentStatus" SelectedIndexChanged="Picker_EmploymentStatus_SelectedIndexChanged"/>
+
+                            <StackLayout x:Name="stack_sector" IsVisible="false">
+                                <Label TextColor="Navy"  x:Name="lbl_EmploymentSector" Text="Select Employment Sector *" FontSize="16"   FontAttributes="Bold"  />
+                                <Picker TextColor="Black" TitleColor="Black" Title="Select Employment Sector" x:Name="Picker_EmploymentSector" SelectedIndexChanged="Picker_EmploymentSector_SelectedIndexChanged"/>
+                            </StackLayout>
+
+                            <StackLayout x:Name="stack_type" IsVisible="false">
+                                <Label TextColor="Navy" x:Name="lbl_ppvalues" Text="Select Employment Type *" FontSize="16"   FontAttributes="Bold"  />
+                                <Picker TextColor="Black" TitleColor="Black" Title="Select Employment Type" x:Name="Picker_employmentype" SelectedIndexChanged="Picker_employmentype_SelectedIndexChanged"/>
+                            </StackLayout>
+
+                            <StackLayout x:Name="stack_regorganisationname" IsVisible="false">
+                                <Label TextColor="Navy" Text="Enter Registered Organization Name*" FontSize="16"  Padding="5" FontAttributes="Bold"  />
+                                <!--<Picker Title="Select Registered Organization Name" x:Name="picker_organisationname"  FontSize="16" SelectedIndexChanged="picker_organisationname_SelectedIndexChanged"/>-->
+                                <Editor Placeholder="Tap To Select Organization Name" x:Name="editor_reOrganizationName" PlaceholderColor="Black" HeightRequest="70" Focused="editor_OrganizationName_Focused" AutoSize="TextChanges" FontSize="16" />
+                            </StackLayout>
+
+                            <StackLayout x:Name="stack_organisationr" IsVisible="false">
+                                <Label TextColor="Navy" Text="Enter Name of Organization *" FontSize="16"  Padding="5" FontAttributes="Bold"  />
+                                <Editor Placeholder="Enter Name of Organization" x:Name="editor_organisation" AutoSize="TextChanges" FontSize="16" />
+                            </StackLayout>
+
+
+                        </StackLayout>
+                    </ScrollView>
+                </Frame>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button IsVisible="false" x:Name="btn_cancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_cancel_Clicked" Padding="10"/>
+                    <!--<Button  x:Name="btn_submit" FontSize="20" Text="Save" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>-->
+                    <Button  IsVisible="false"  x:Name="btn_next" FontSize="20" Text="Next" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_next_Clicked" Padding="10" FontAttributes="Bold"/>
+                    <Button  IsVisible="false"  x:Name="btn_submit" FontSize="20" Text="Save &amp; Next" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>
+
+                </StackLayout>
+            </StackLayout>
+
+
+
+
+        </StackLayout>
+
+
+        <ContentView x:Name="popuporganisationname" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popuporganisationname" Text="Tap To Select Organisation Name" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold" TextColor="Navy" />
+                <Frame  Padding="0" Margin="3" CornerRadius="20" BorderColor="Navy">
+                    <SearchBar Placeholder="Type Organisation Name" x:Name="SearchBar_organisationname" IsSpellCheckEnabled="False" PlaceholderColor="#736f6f" BackgroundColor="#e0e0e0" TextColor="Black"  CancelButtonColor="Red"  Keyboard="Plain" TextChanged="SearchBar_organisationname_TextChanged"/>
+                </Frame>
+
+                <ListView x:Name="listview_organisationname" HasUnevenRows="True" SeparatorColor="Navy" ItemTapped="listview_organisationname_ItemTapped" BackgroundColor="White">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" Grid.Row="0">
+                                    <Label Text="{Binding OrgName}" HorizontalOptions="FillAndExpand" Padding="10" HorizontalTextAlignment="Start" TextColor="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="Navy" TextColor="White" FontAttributes="Bold"  x:Name="popuporganisationnameCancel" Clicked="popuporganisationnameCancel_Clicked" Text="Cancel" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame Style="{StaticResource FrameLoadingStyle}">
+                    <StackLayout Orientation="Horizontal" Padding="6">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="Lbl_PleaseWait" Text="Please Wait ..." Style="{StaticResource LabelStyle}" HorizontalOptions="FillAndExpand" WidthRequest="600"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+</ContentPage>

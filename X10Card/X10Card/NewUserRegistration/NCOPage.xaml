@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="X10Card.NewUserRegistration.NCOPage"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             ios:Page.UseSafeArea="true"  >
+    <NavigationPage.TitleView  >
+        <StackLayout  Orientation="Horizontal" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" >
+
+            <Image Source="ic_himachallogo.png"  HeightRequest="40"  VerticalOptions="CenterAndExpand"/>
+            <StackLayout  Orientation="Vertical" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Spacing="0">
+                <Label x:Name="lbl_navigation_header1" Style="{StaticResource NavigationLabelColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"
+                    Text="Department Of Labour &amp; Employment"  VerticalTextAlignment="Center" />
+                <Label x:Name="lbl_navigation_header"  Style="{StaticResource NavigationLabelColor}"  FontSize="13" FontAttributes="Bold"
+                       HorizontalTextAlignment="Center"  VerticalTextAlignment="Center" />
+
+            </StackLayout>
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="ic_home.png" Clicked="ToolbarItem_Clicked" ></ToolbarItem>
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <StackLayout Margin="9">
+
+            <StackLayout>
+                <Button x:Name="btn_header" CornerRadius="10"  Text="NCO Details" HorizontalOptions="FillAndExpand"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold"/>
+                <Frame  CornerRadius="10"  BorderColor="#058ef2" VerticalOptions="FillAndExpand"  Padding="5">
+
+                    <StackLayout>
+
+                        <ListView x:Name="listview_NCOdetails"   HasUnevenRows="True" SeparatorColor="#126b8a"  SelectionMode="None" >
+                            <ListView.ItemTemplate >
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <Frame VerticalOptions="StartAndExpand" Margin="5" HasShadow="False" CornerRadius="20" BackgroundColor="White" BorderColor="#0072b6">
+                                            <StackLayout Orientation="Vertical">
+
+                                                <Label FontSize="16" Text="NCO" TextColor="Navy"  HorizontalTextAlignment="Start" FontAttributes="Bold"  Grid.Row="0" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding NCONm}"  HorizontalOptions="Start" HorizontalTextAlignment="Start"  TextColor="Maroon" Grid.Row="0" Grid.Column="1"/>
+
+                                                <Label FontSize="16" Text="Experience (In Months)" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="1" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding experience}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" TextColor="Maroon" Grid.Row="1" Grid.Column="1" />
+
+                                                <Label FontSize="16" Text="Status" TextColor="Navy"  HorizontalTextAlignment="Start"  FontAttributes="Bold" Grid.Row="2" Grid.Column="0"/>
+                                                <Label FontSize="16" Text="{Binding StatusDesc}"  HorizontalOptions="Start" HorizontalTextAlignment="Start" TextColor="Maroon" Grid.Row="2" Grid.Column="1"/>
+
+                                                <StackLayout Orientation="Horizontal" IsVisible="{Binding imgeditdeletevisibility}">
+                                                    <ImageButton  Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"  x:Name="img_edit" CommandParameter="{Binding NCOCd}" Clicked="img_edit_Clicked"  HorizontalOptions="CenterAndExpand" Source="ic_edit" BackgroundColor="Transparent" HeightRequest="30" />
+                                                    <ImageButton  Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2"  x:Name="img_delete" CommandParameter="{Binding NCOCd}" Clicked="img_delete_Clicked"  HorizontalOptions="CenterAndExpand" Source="ic_delete" BackgroundColor="Transparent" HeightRequest="30" />
+                                                </StackLayout>
+
+                                            </StackLayout>
+                                        </Frame>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <Button CornerRadius="10" x:Name="btn_AddNCO" Text="Add NCO" HorizontalOptions="CenterAndExpand" Padding="5"  TextColor="White" BackgroundColor="Navy" FontSize="16" FontAttributes="Bold" Clicked="btn_AddNCO_Clicked"/>
+                        <Label x:Name="lbl_maxnco" FontSize="14" Text="Maximum 3 NCOs are allowed." TextColor="Maroon"  HorizontalTextAlignment="Center" />
+
+                    </StackLayout>
+
+
+                </Frame>
+
+                <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+                    <Button IsVisible="false" x:Name="btn_submit" FontSize="20" Text="Save" Margin="0,10,0,0" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_submit_Clicked" Padding="10" FontAttributes="Bold"/>
+                    <Button IsVisible="false" x:Name="btn_finalsubmit" FontSize="20" Text="Final Submit" Margin="0,10,0,0" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_finalsubmit_Clicked" Padding="10" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+
+
+
+        </StackLayout>
+
+
+
+        <ContentView x:Name="popupaddNCO" BackgroundColor="#C0808080" Padding="10" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All" >
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="Center" BackgroundColor="white" Padding="10">
+                <Label  BackgroundColor="#0072b6" TextColor="White" Text="ADD NCO DETAILS" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold"  />
+                <Label Text="*Fields marked are mandatory" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="Navy" FontSize="14" />
+
+                <ScrollView>
+                    <StackLayout  Orientation="Vertical" >
+
+
+                        <Label Text="SELECT NCO *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                        <!--<Picker TextColor="Black" TitleColor="Black" Title="SELECT NCO " x:Name="picker_NCO" SelectedIndexChanged="picker_NCO_SelectedIndexChanged"/>-->
+                        <Editor Placeholder="Tap To Select NCO Name" x:Name="editor_NCOName" PlaceholderColor="Black" HeightRequest="70" Focused="editor_NCOName_Focused" AutoSize="TextChanges" FontSize="16" />
+
+
+
+
+                        <Label Text="ENTER EXPERIENCE (MONTHS) *" TextColor="Navy" FontSize="16" FontAttributes="Bold" />
+                        <Entry x:Name="entry_EXPERIENCE" Placeholder="ENTER EXPERIENCE (MONTHS)" MaxLength="4" Keyboard="Numeric" TextColor="Black"  FontSize="16" ></Entry>
+
+
+                        <Label Text="SELECT REGISTRATION DATE *" TextColor="Navy" FontSize="16"  FontAttributes="Bold" />
+                        <StackLayout HorizontalOptions="FillAndExpand" >
+                            <Entry TextColor="Black"  HorizontalOptions="FillAndExpand"  FontSize="16"  Placeholder="Select Registration Date" x:Name="Entry_RegistrationDate" Focused="Entry_RegistrationDate_Focused" />
+                            <DatePicker x:Name="datepicker_RegistrationDate" IsVisible="false"  Format="dd/MM/yyyy" DateSelected="datepicker_RegistrationDate_DateSelected"  HorizontalOptions="FillAndExpand"/>
+                        </StackLayout>
+
+
+                    </StackLayout>
+                </ScrollView>
+
+                <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                    <Button  x:Name="btn_popupNCOcancel" FontSize="18" Text="Cancel" Margin="0,10,0,10" BackgroundColor="#0072b6" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popupNCOcancel_Clicked" Padding="10"/>
+                    <Button  x:Name="btn_popupNCOsubmit" FontSize="20" Text="Save" Margin="0,10,0,10" BackgroundColor="#058ef2" TextColor="White" CornerRadius="15"  HorizontalOptions="FillAndExpand" Clicked="btn_popupNCOsubmit_Clicked" Padding="10" FontAttributes="Bold"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ContentView>
+
+
+        <ContentView x:Name="popupNCOname" BackgroundColor="#C0808080" Padding="20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="white">
+                <Label x:Name="lbl_popupNCOname" Text="Tap To Select NCO Name" Padding="6" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" FontSize="16" FontAttributes="Bold" TextColor="Navy" />
+                <Frame  Padding="0" Margin="3" CornerRadius="20" BorderColor="Navy">
+                    <SearchBar Placeholder="Type NCO Name" x:Name="SearchBar_NCOname" IsSpellCheckEnabled="False" PlaceholderColor="#736f6f" BackgroundColor="#e0e0e0" TextColor="Black"  CancelButtonColor="Red"  Keyboard="Plain" TextChanged="SearchBar_NCOname_TextChanged"/>
+                </Frame>
+
+                <ListView x:Name="listview_NCOname" HasUnevenRows="True" SeparatorColor="Navy" ItemTapped="listview_NCOname_ItemTapped" BackgroundColor="White">
+                    <ListView.ItemTemplate >
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Vertical" Grid.Row="0">
+                                    <Label Text="{Binding NCOName}" HorizontalOptions="FillAndExpand" Padding="10" HorizontalTextAlignment="Start" TextColor="Black"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Button BackgroundColor="Navy" TextColor="White" FontAttributes="Bold"  x:Name="popupNCOnameCancel" Clicked="popupNCOnameCancel_Clicked" Text="Cancel" Margin="5" HorizontalOptions="FillAndExpand"/>
+            </StackLayout>
+        </ContentView>
+
+
+        <ContentView x:Name="Loading_activity" BackgroundColor="#C0808080" Padding="20, 20" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <Frame BackgroundColor="White" HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Horizontal" Margin="6" HorizontalOptions="FillAndExpand">
+                        <ActivityIndicator IsVisible="true" IsRunning="true" Margin="5"/>
+                        <Label x:Name="lbl_PleaseWait" Text="Please Wait ..." TextColor="Black" FontAttributes="Bold" HorizontalOptions="FillAndExpand" WidthRequest="600" VerticalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ContentView>
+    </Grid>
+
+</ContentPage>
